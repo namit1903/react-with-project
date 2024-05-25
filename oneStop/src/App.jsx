@@ -1,8 +1,9 @@
+import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import Home from "./components/Home.jsx";
 import ItemCard from "./components/ItemCard";
 import Navbar from "./components/Navbar";
-import {data} from './store/data.js'
+import {data} from './store/data.js';
 
 export default function App() {
 
@@ -10,8 +11,8 @@ export default function App() {
   return (
 <>
       <Navbar></Navbar>
-      <Home />
-   
+      {/* <Home /> */}
+   <Outlet/>
 
       {/* <Footer/> */}
       </>
