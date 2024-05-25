@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.footer{
+  position: fixed;
+  top: 80vh;
+  left: 25vw;
+
+}
