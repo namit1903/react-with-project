@@ -8,3 +8,6 @@
   left: 25vw;
 
 }
+.hidden-false{
+  display: none;
+}

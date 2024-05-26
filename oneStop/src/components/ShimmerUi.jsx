@@ -59,6 +59,7 @@ function ShimmerUi() {
 <span className="loading loading-ring loading-lg"></span>
 
    </div>
+   {console.log("shimmrer ui last line")}
    </div>
 
     </>
