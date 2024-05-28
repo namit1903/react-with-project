@@ -80,7 +80,7 @@ if(ProductArray.length==0) return(
    </div>
    <div className="item-container flex flex-wrap gap-3">
    {ProductArray.map((obj) => (
-          <ItemCard obj={obj} key={obj.id}></ItemCard>
+          <ItemCard obj={obj} key={`${Date.now()}`}></ItemCard>
         ))}
    </div>
     </div>

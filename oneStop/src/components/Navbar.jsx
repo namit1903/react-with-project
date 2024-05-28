@@ -15,7 +15,6 @@ const Navbar = () => {
   // Array containing navigation items
   const navItems = [
     { id: 1, text: "Home" },
-
     { id: 2, text: "About" },
     { id: 3, text: "Contact" },
     { id: 4, text: "GoToCart" },
@@ -33,11 +32,11 @@ const {cart}=useContext(MyContext)
         {navItems.map((item) => (
           <>
             <li
-              key={item.id}
+              key={`${Date.now()}_${item.id}}`}
               className="p-4 hover:bg-[#00df9a] rounded-xl m-2 cursor-pointer duration-300 hover:text-black"
             >
               <Link  className="flex gap-4"to={`/${item.text.toLowerCase()}`}>
-                {item.text.toLowerCase() === "gotocart" && (
+                {item.text.toLowerCase() === "gotocart" && 
                   <div className="flex ">
                     <div className="relative py-0">
                       <div className=" absolute bottom-3 left-3">
@@ -61,7 +60,7 @@ const {cart}=useContext(MyContext)
                       </svg>
                     </div>
                   </div>
-                )}
+                }
 
                 {item.text}
               </Link>
