@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import MyContext from '../store/MyContext';
 // import {data} from '../store/data.js'
 function ItemCard({obj}) {
 //  console.log("itemcard is printed")
@@ -10,9 +11,12 @@ function ItemCard({obj}) {
 
 
 // console.log(obj)
+let{cart,setCart}=useContext(MyContext);
 let{title,image,rating,price,category}=obj;
-
-
+function handleAdd(){
+    setCart([...cart,{title:title,image:image,rating:rating,price:price,category:category}]);
+}
+console.log("itemcart",cart)
   return (
    <>
   
@@ -32,7 +36,8 @@ let{title,image,rating,price,category}=obj;
         </div>
         <div className="flex items-center justify-between">
             <span className="text-3xl font-bold text-gray-900 dark:text-white">${price}</span>
-            <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+           
+                <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleAdd}>Add to cart</button>
         </div>
     </div>
 </div>

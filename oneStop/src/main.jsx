@@ -5,9 +5,11 @@ import Home from "./components/Home.jsx";
 import About from "./components/About.jsx";
 import Error from './components/Error.jsx';
 import Contact from "./components/Contact.jsx";
+import Cart from './components/Cart.jsx';
 import{createBrowserRouter,RouterProvider} from 'react-router-dom';
 
 import './index.css'
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
         path: 'contact',
         element: <Contact />,
       },
+      {
+        path:'gotocart',
+        element: <Cart/>
+      }
     ],
     errorElement: <Error/>
   },

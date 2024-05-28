@@ -14,7 +14,9 @@ function Home() {
   if (flag){
     setProductArray(result);
     setFlag(false)
+    console.log("sare setState function le liye")
   }
+  console.log("rerendering hui ya nahi ");
   let getData=async()=>{
 
     let data= await fetch("https://fakestoreapi.com/products");
@@ -28,7 +30,7 @@ useEffect(()=>{
   
   setTimeout(()=>
   getData()
-,3000)
+,1000)
  
  console.log("useEffect1 ended")
 },[])
@@ -94,7 +96,7 @@ ProductArray.length==0?
 <input  type="text" placeholder="hunt your stuff...." className='border-2 ' onChange={(e)=>setQuery(e.target.value)}></input>
       <button className={`btn btn-xs btn-secondary`}>hunt items</button>
       </form>{!flag &&
-      <ul className= {`absolute top-10 hidden-${!flag}`}>
+      <ul className= {`absolute top-10 `}>
         {
         // console.log("jsx print hoga")
         result.map((item, index) => (
