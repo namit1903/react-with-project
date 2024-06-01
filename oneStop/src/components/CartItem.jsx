@@ -1,8 +1,8 @@
 import { useContext } from "react"
 import MyContext from "../store/MyContext";
 
-export default function CartItem({title,image,price,category,rating}){
-
+export default function CartItem({id,title,image,price,category,rating}){
+const {cancleItem}=useContext(MyContext)
 
   return(
     <>
@@ -22,7 +22,7 @@ export default function CartItem({title,image,price,category,rating}){
         </div>
     <div className="flex justify-around">
     <div className="card-actions justify-start items-">
-    <button className="btn btn-outline btn-error">cancle</button>
+    <button className="btn btn-outline btn-error" onClick={()=>{console.log(id);cancleItem(id)}}>cancle</button>
     </div>
     <div className="card-actions justify-end">
       <button className="btn btn-primary">Buy Now</button>

@@ -17,23 +17,17 @@ function Home() {
     console.log("sare setState function le liye")
   }
   console.log("rerendering hui ya nahi ");
-  let getData=async()=>{
-
-    let data= await fetch("https://fakestoreapi.com/products");
-    let obj=await data.json();
-    // console.log("getData",obj)
-    setAllData(obj)//rerendering hogi ab
-    setProductArray(obj)//rerendering
-  }
-useEffect(()=>{
-  console.log("useEffect started->firlst line")
+  setAllData(obj)//rerendering hogi ab
+  setProductArray(obj)//rerendering
+// useEffect(()=>{
+// //   console.log("useEffect started->firlst line")
   
-  setTimeout(()=>
-  getData()
-,1000)
+// //   setTimeout(()=>
+// //   getData()
+// // ,1000)
  
- console.log("useEffect1 ended")
-},[])
+//  console.log("useEffect1 ended")
+// },[])
 
 //second useEffect
 
@@ -73,7 +67,7 @@ function submitSearch(e){
   let value=e.target[0].value;
   let data=allData.filter(product =>
     product.title.toLowerCase().includes(value.toLowerCase()));
-    i.value=""
+    i.value=
  
   setProductArray(data)
   

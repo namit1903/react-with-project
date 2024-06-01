@@ -14,7 +14,7 @@ const ItemCard =React.memo(({obj})=> {
 let{cart,setCart}=useContext(MyContext);
 let{title,image,rating,price,category}=obj;
 function handleAdd(){
-    setCart([...cart,{title:title,image:image,rating:rating,price:price,category:category}]);
+    setCart([...cart,{id:`${Date.now()}`,title:title,image:image,rating:rating,price:price,category:category}]);
     console.log("handler function called")
 }
 console.log("itemcart",cart)

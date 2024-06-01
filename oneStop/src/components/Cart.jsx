@@ -11,10 +11,10 @@ function Cart(){
  <div className="cart flex gap-2 justify-around">
   <div className="items flex gap-3 flex-wrap">
     {cart.map(item=>
-  <CartItem  key={`${Date.now()}`}title={item.title} image={item.image} rating={item.rating} price={item.price} category={item.category}/>)}
+  <CartItem  key={item.id} id={item.id} title={item.title} image={item.image} rating={item.rating} price={item.price} category={item.category}/>)}
   </div>
  
-  <Bill/>
+  <Bill cart={cart}/>
  </div>}
   </>)
 }
