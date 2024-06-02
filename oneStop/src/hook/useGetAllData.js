@@ -7,6 +7,7 @@ const useGetAllData = () => {
 let getData=async()=>{
 
   let data= await fetch("https://fakestoreapi.com/products");
+  console.log("get..")
   let obj=await data.json();
   setObj(obj);
 }

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import MyContext from '../store/MyContext';
 // import {data} from '../store/data.js'
 const ItemCard =React.memo(({obj})=> {
-//  console.log("itemcard is printed")
+ console.log("itemcard is printed")
 /*  fetch('https://dummyjson.com/products')
 .then(res => res.json())
 .then(console.log);
@@ -10,11 +10,11 @@ const ItemCard =React.memo(({obj})=> {
             
 
 
-// console.log(obj)
+console.log(obj)
 let{cart,setCart}=useContext(MyContext);
-let{title,image,rating,price,category}=obj;
+let{title,images,rating,price,category}=obj;
 function handleAdd(){
-    setCart([...cart,{id:`${Date.now()}`,title:title,image:image,rating:rating,price:price,category:category}]);
+    setCart([...cart,{id:`${Date.now()}`,title:title,image:images,rating:rating,price:price,category:category}]);
     console.log("handler function called")
 }
 console.log("itemcart",cart)
@@ -24,7 +24,7 @@ console.log("itemcart",cart)
   <div className="flex">
 <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <a href="#">
-        <img className="p-8 rounded-t-lg" src={`${image}`} alt="product image" />
+        <img className="p-8 rounded-t-lg" src={`${images[images.length - 1]}`} alt="product image" />
     </a>
     <div className="px-5 pb-5">
         <a href="#">

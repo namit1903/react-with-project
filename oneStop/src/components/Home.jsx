@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ItemCard from './ItemCard'
 import ShimmerUi from './ShimmerUi';
+import useGetAllData from '../hook/useGetAllData';
 function Home() {
   console.log("home rendered")
  let[allData,setAllData]=useState([]);
@@ -10,27 +11,35 @@ function Home() {
  const[flag,setFlag] = useState(false); //
   // console.log("ye fetched array hai",allData)
   
-  console.log("home rendered",result)
+  
   if (flag){
     setProductArray(result);
     setFlag(false)
-    console.log("sare setState function le liye")
-  }
-  console.log("rerendering hui ya nahi ");
-  setAllData(obj)//rerendering hogi ab
-  setProductArray(obj)//rerendering
-// useEffect(()=>{
-// //   console.log("useEffect started->firlst line")
   
-// //   setTimeout(()=>
-// //   getData()
-// // ,1000)
+  }
+ 
+  let getData=async()=>{
+try{
+    let data= await fetch("https://dummyjson.com/products");
+   
+    let obj=await data.json();
+    console.log("get..",obj)
+    setAllData(obj.products);
+setProductArray(obj.products)
+}
+    catch(error){
+      console.log("fetching error",error)
+    }
+  }
+  useEffect(()=>{
+    getData();
+  },[]);
  
 //  console.log("useEffect1 ended")
 // },[])
 
 //second useEffect
-
+//for search functionality
 useEffect(()=>{
   console.log("useEffect2")
 console.log("allhai na",allData)
@@ -67,7 +76,7 @@ function submitSearch(e){
   let value=e.target[0].value;
   let data=allData.filter(product =>
     product.title.toLowerCase().includes(value.toLowerCase()));
-    i.value=
+    i.value="";
  
   setProductArray(data)
   
@@ -94,7 +103,8 @@ ProductArray.length==0?
         {
         // console.log("jsx print hoga")
         result.map((item, index) => (
-          <li className="z-1 bg-black"key={index}><button className="hover:bg-white" onClick={()=>{setQuery(item.title)
+          <li className="z-1 bg-black"key={index}><button className="hover:bg-white" onClick={()=>{
+            // setQuery(item.title)
             setFlag(true)}
           }>{item.title}</button></li> // Adjust based on your API response structure
         ))}
