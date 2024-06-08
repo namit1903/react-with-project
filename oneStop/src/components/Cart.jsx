@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import MyContext from "../store/MyContext";
+import MyContext from "../Context/MyContext";
 import Bill from "./Bill";
 import CartItem from "./CartItem";
 

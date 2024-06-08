@@ -10,6 +10,7 @@ import{createBrowserRouter,RouterProvider} from 'react-router-dom';
 let About=lazy(()=>import("./components/About"))
 import './index.css'
 import ProductDetail from './components/ProductDetail.jsx';
+import Kart from './components/Kart.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,12 +31,16 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path:'gotocart',
+        path:'gotocart2',
         element: <Cart/>
       },
       {
         path:'/product/:id',
         element: <ProductDetail/>
+      },
+      {
+        path:'gotocart',
+        element:<Kart/>
       },
       {
         path: 'about',

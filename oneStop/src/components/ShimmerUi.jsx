@@ -1,8 +1,11 @@
 import React from 'react'
-
+import { useContext } from 'react'
+import ThemeContext from '../Context/ThemeContext'
 function ShimmerUi() {
+  const{theme}=useContext(ThemeContext);
+  // const dark=
   return (<>
-    <div className="flex justify-center">
+    <div className="flex justify-center ">
   <span className="loading loading-ball loading-xs"></span>
 <span className="loading loading-ball loading-sm"></span>
 <span className="loading loading-ball loading-md"></span>

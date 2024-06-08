@@ -11,3 +11,6 @@
 .hidden-false{
   display: none;
 }
+#root{
+  background-color:rgb(110, 101, 159)
+}

@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import MyContext from "../store/MyContext";
+import MyContext from "../Context/MyContext";
 
 export default function CartItem({id,title,image,price,category,rating}){
 const {cancleItem}=useContext(MyContext)
