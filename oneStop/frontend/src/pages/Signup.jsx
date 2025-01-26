@@ -16,7 +16,8 @@ const Signup = () => {
 
   let lightTheme = "flex items-center justify-center min-h-[92vh] bg-white";
   let darkTheme = "flex items-center justify-center min-h-[92vh]";
-
+// const api=useSignupMutation();
+// console.log(api);
   const [signup , {isLoading}]= useSignupMutation();
  
 

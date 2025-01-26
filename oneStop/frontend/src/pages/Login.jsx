@@ -22,6 +22,7 @@ const Login= () => {
     let loginfunction = async (values)=>{
       setErrMsg(null);
       let result = await login(values);
+      console.log("here is result",result);
        if(result.data.result == true ){
         navigate("/");
        }else{
@@ -46,7 +47,7 @@ const Login= () => {
 
   return (
     <div className={theme == "light" ? lightTheme : darkTheme}>
-      <div className="bg-gray-700 shadow-md rounded-lg px-6 py-4 w-1/4 h-1/2">
+      <div className="bg-gray-700 shadow-md rounded-lg px-6 py-4 w-[60vw] h-[70vh]">
         <h1 className="text-2xl font-bold text-center mb-4 dark:text-gray-200">
           Welcome Back!
         </h1>
@@ -103,7 +104,7 @@ const Login= () => {
             {isLoading ? <span className="loading loading-dots loading-lg"></span> : "Login"}
           </button>
         </form>
-        <h2 className="text-white text-2xl text-center "> {errMsg ? errMsg : null }</h2>
+        <h2 className="text-white text-2xl text-center "> {errMsg ?`Ooops!! ${errMsg}` : null }</h2>
       </div>
     </div>
   );

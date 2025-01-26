@@ -11,7 +11,7 @@ const ReviewComponent = ({obj,showIndex,setShowIndex,idx}) => {
 obj.reviewerName
     }</p>
     <p onClick={()=>setShowIndex(showIndex==idx?null:idx)}><FaCircleArrowDown /></p>  </div>
-  {showIndex==idx ? ( <div className="border-2 w-[60vh] ml-[31.3%] border-red-300 bg-emerald-200 rounded text-black  flex justify-around"><p>{obj.comment}</p><p>Rating:{obj.rating}</p></div>):<></>}
+  {showIndex==idx ? ( <div className="border-2 w-[60vh] ml-[0.3%] border-red-300 bg-emerald-200 rounded text-black  flex justify-around z-10 "><p>{obj.comment}</p><p>Rating:{obj.rating}</p></div>):<></>}
 
 </div>
   )

@@ -4,10 +4,12 @@ import { Link ,useNavigate} from "react-router-dom";
 import MyContext from "../Context/MyContext";
 import ThemeContext from "../Context/ThemeContext";
 import { useSelector,useDispatch } from "react-redux";
-
+import { useGetUserQuery, useLogoutMutation } from "../Utility/authApi";
 
 const Navbar = () => {
   const navigate=useNavigate();
+  // let navigate = useNavigate();
+  let {refetch } = useGetUserQuery()
   // State to manage the navbar's visibility
   const [nav, setNav] = useState(false);
   const items=useSelector(state=>state.cart.itemArray);
@@ -25,6 +27,16 @@ const totalItems=useSelector(state=>state.cart.totalProducts);
     { id: 3, text: "Contact" },
     { id: 4, text: "GoToCart" },
   ];
+  let [logout , {isLoading , isError}] = useLogoutMutation();
+
+  let handleLogout = async () => {
+      await logout();
+        refetch();
+      navigate("/login");
+  } 
+
+
+
 // const {cart}=useContext(MyContext)
 const {theme,handleTheme}=useContext(ThemeContext)
 function handleThemeChange(){
@@ -101,6 +113,7 @@ const lightTheme=`w-full bg-zinc-300 text-black flex justify-between items-cente
   
 </label>
       </ul>
+      <li className="text-xl list-none  ml-5  p-2 cursor-pointer hover:border-2 border-red-500 rounded-md" onClick={handleLogout}>Logout </li>
 
       {/* Mobile Navigation Icon */}
       <div onClick={handleNav} className="block md:hidden">
@@ -112,7 +125,7 @@ const lightTheme=`w-full bg-zinc-300 text-black flex justify-between items-cente
         className={
           //hide this ul above 768px i.e above medium size devices
           nav
-            ? "fixed md:hidden left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500"
+            ? "fixed md:hidden left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500 z-20"
             : "ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%]"
         }
       >
@@ -125,7 +138,7 @@ const lightTheme=`w-full bg-zinc-300 text-black flex justify-between items-cente
         {navItems.map((item) => (
           <li
             key={item.id}
-            className="p-4 border-b rounded-xl hover:bg-[#00df9a] duration-300 hover:text-black cursor-pointer border-gray-600"
+            className="p-4  text-white border-b rounded-xl hover:bg-[#00df9a] duration-300 hover:text-black cursor-pointer border-gray-600"
           >
             <Link to={`/${item.text.toLowerCase()}`}>{item.text}</Link>
           </li>

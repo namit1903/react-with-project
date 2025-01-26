@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5143/users",
+    baseUrl: "http://localhost:5000/users",
     credentials: "include",
   }),
   endpoints: (builder) => ({
@@ -34,15 +34,15 @@ const apiSlice = createApi({
         method: "GET",
       }),
     }),
-    logout: builder.query({
+    logout: builder.mutation({
       query: () => ({
         url: "/logout",
-        method: "GET",
+        method: "POST",
       }),
     }),
   }),
 });
 
-export const {useLoginMutation , useLogoutQuery , useSignupMutation , useUpdateMutation , useGetUserQuery} = apiSlice;
+export const {useLoginMutation , useLogoutMutation , useSignupMutation , useUpdateMutation , useGetUserQuery} = apiSlice;
 
 export default apiSlice;

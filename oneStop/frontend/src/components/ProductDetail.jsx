@@ -20,15 +20,15 @@ console.log("show", showIndex)
 if(obj==null){return(<h1>Loading...............</h1>)};
 let {title,price,description,images,rating,id,reviews}=obj;
 // let ids=useSelector(state=>state.cart.ids);
-let light=`w-[100vw] h-[90vh] border-t-2 bg-zinc-300`;
-let dark=`w-[100vw] h-[90vh] bg-black border-t-2 `;
+let light=`w-[100vw] h-[90vh] border-t-2 bg-zinc-300 flex flex-col`;
+let dark=`w-[100vw] h-[90vh] bg-black border-t-2 flex flex-col `;
 
   return (
     
      
     <div className={theme=='dark'?dark:light}>
          
-    <div className="card card-side w-[70vw] h-[50vh] border-1 mt-4 border-red-500 mx-auto bg-white text-black shadow-xl">
+    <div className="card card-side w-[70vw] h-[50vh] border-1 mt-4 border-red-500 mx-auto bg-white text-black shadow-xl  overflow-scroll hide-scrollbar  flex">
     {ids.find(itemId=>itemId==id)!=undefined?<p className="border-2 bg-orange-500 text-black absolute rounded mt-3">Added to Cart</p>:<></>}
   <figure className='w-[50vw]'>
     <div className="w-64 carousel rounded-box hover:play-carousel cursor-pointer">
@@ -40,16 +40,18 @@ let dark=`w-[100vw] h-[90vh] bg-black border-t-2 `;
 </div></figure>
   <div className="card-body">
     <h2 className="card-title">{title}</h2>
-    <button className=' btn btn-primary w-15 h-[5px]'>Price:{price}</button>
+    <button className=' btn btn-primary '>Price:{price}</button>
     <p>{description}</p>
-    <button className=' btn btn-primary w-15 h-[5px]'>Ratings:{rating}</button>
+    <button className=' btn btn-primary '>Ratings:{rating}</button>
     
     <div className="card-actions justify-end">
       <button className="btn btn-primary" onClick={()=>{dispatch(addCart(obj))}}>Confirm To BUY</button>
     </div>
   </div>
 </div>
-<div className="border-red-400 border-2 w-[70vw] m-auto min-h-[20vh] mt-6" >
+
+{/* accordion */}
+<div className="border-10 border-red-400  w-[70vw] m-auto min-h-[20vh] mt-6" >
 {reviews.map((item,idx)=>(<ReviewComponent obj={item} showIndex={showIndex} setShowIndex={setShowIndex} idx={idx}/>))}
  </div></div>
   )
